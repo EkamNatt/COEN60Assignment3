@@ -11,6 +11,8 @@
     <h1>Welcome to Rock Paper Scissors!</h1>
     <p>Enter your name: <input type="text" id="playerName"></p>
     <button onclick="startGame()">Start Game</button>
+    
+    <!-- Game container -->
     <div id="gameContainer" style="display: none;">
         <table>
             <tr>
@@ -20,9 +22,9 @@
             </tr>
             <tr>
                 <td>
-                    <input type="radio" name="choice" value="paper"> Paper
-                    <input type="radio" name="choice" value="scissors"> Scissors
-                    <input type="radio" name="choice" value="rock"> Rock
+                    <input type="radio" name="choice" value="paper" id="paperRadio"> Paper
+                    <input type="radio" name="choice" value="scissors" id="scissorsRadio"> Scissors
+                    <input type="radio" name="choice" value="rock" id="rockRadio"> Rock
                 </td>
                 <td><button onclick="play()">Go!</button></td>
                 <td id="computerChoice"></td>
@@ -34,7 +36,7 @@
             </tr>
         </table>
         <p>Total play counts: <span id="totalPlays">0</span></p>
-        <p id="welcomeText"></p> <!-- Added an id for welcome message -->
+        <p id="welcomeText"></p>
         <p id="historyText"></p>
     </div>
 </body>
