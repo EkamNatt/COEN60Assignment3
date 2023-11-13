@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-    <script src="game.js"></script>
-    
-    <h1 id="welcomeText"></h1>
+    <h1 id="welcomeText">Rock Paper Scissors Game</h1>
     
     <div id="gameContainer">
         <table>
@@ -25,13 +23,16 @@
                     <input type="radio" name="choice" value="rock" id="rockRadio"> Rock
                 </td>
                 <td><button onclick="play()">Go!</button></td>
-                <td id="computerChoiceDisplay"></td>
+                <td id="computerChoice">Computer choice:</td>
             </tr>
             <tr>
-                <td colspan="3" id="resultText">Results will show here after you play.</td>
+                <td colspan="3" id="resultText">Result: </td>
             </tr>
         </table>
-        <p id="historyText"></p>
+        <p id="historyText">History:</p>
     </div>
+    
+    <script src="game.js"></script>
 </body>
 </html>
+
