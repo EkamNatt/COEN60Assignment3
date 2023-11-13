@@ -1,12 +1,14 @@
 let playerName = "";
+let gameStarted = false;
 
 function startGame() {
     playerName = document.getElementById("playerName").value;
     if (playerName === "") {
         alert("Please enter your name.");
     } else {
-        document.getElementById("gameContainer").style.display = "block";
         document.getElementById("welcomeText").textContent = `Welcome, ${playerName}! Let's play Rock Paper Scissors.`;
+        gameStarted = true;
+        document.getElementById("gameContainer").style.display = "block";
     }
 }
 
@@ -27,6 +29,11 @@ function updateHistoryText() {
 }
 
 function play() {
+    if (!gameStarted) {
+        alert("Please start the game first.");
+        return;
+    }
+
     const selectedChoice = document.querySelector("input[name='choice']:checked");
     if (!selectedChoice) {
         alert("Please select an option before playing.");
