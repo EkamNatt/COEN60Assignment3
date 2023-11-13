@@ -34,17 +34,12 @@ function play() {
         return;
     }
 
-    let choice;
-    if (document.getElementById('paperRadio').checked) {
-        choice = 'paper';
-    } else if (document.getElementById('scissorsRadio').checked) {
-        choice = 'scissors';
-    } else if (document.getElementById('rockRadio').checked) {
-        choice = 'rock';
-    } else {
+    let choice = document.querySelector('input[name="choice"]:checked');
+    if (!choice) {
         alert("Please select Rock, Paper, or Scissors.");
         return;
     }
+    choice = choice.value;
 
     const computerChoice = getRandomChoice();
     document.getElementById("yourChoice").textContent = `You selected: ${choice}`;
@@ -65,7 +60,6 @@ function play() {
     const result = compare(choice, computerChoice);
     document.getElementById("computerResult").textContent = result;
 }
-
 
 function compare(yourChoice, computerChoice) {
     if (yourChoice === computerChoice) {
