@@ -4,12 +4,8 @@ const playerName = window.prompt("Please enter your name:");
 // Check if the player entered a name and it's not empty
 if (playerName) {
     // Display the player's name and welcome message
-    const welcomeText = document.createElement("p");
-    welcomeText.textContent = `Welcome, ${playerName}!`;
-    
-    // Append the welcome message to the welcomeContainer div
     const welcomeContainer = document.getElementById("welcomeContainer");
-    welcomeContainer.appendChild(welcomeText);
+    welcomeContainer.innerHTML = `<p>Welcome, ${playerName}!</p>`;
 } else {
     // Handle the case where the player didn't enter a name
     alert("Please enter your name to continue.");
