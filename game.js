@@ -74,3 +74,4 @@ function compare(yourChoice, computerChoice) {
         return "Computer wins!";
     }
 }
+
