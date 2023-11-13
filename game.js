@@ -6,7 +6,7 @@ function startGame() {
         alert("Please enter your name.");
     } else {
         document.getElementById("gameContainer").style.display = "block";
-        document.write(`Welcome, ${playerName}! Let's play Rock Paper Scissors.`);
+        document.getElementById("welcomeText").textContent = `Welcome, ${playerName}! Let's play Rock Paper Scissors.`;
     }
 }
 
