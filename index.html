@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors Game</title>
+    <title>Rock-Paper-Scissors Game</title>
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-    <div id="welcomeContainer">
-        <!-- Display player's name and welcome message here -->
-    </div>
+    <h1>Welcome to the Rock-Paper-Scissors Game</h1>
+    <p>Please enter your name:</p>
+    <input type="text" id="playerName" placeholder="Your Name">
+    <button onclick="startGame()">Start</button>
     
-    <h1>Rock Paper Scissors Game</h1>
-    
-    <div id="gameContainer">
+    <div id="gameContainer" style="display: none;">
+        <h2>Welcome, <span id="welcomeMessage"></span>!</h2>
         <table>
             <tr>
                 <th>Your selection</th>
@@ -22,18 +22,22 @@
             </tr>
             <tr>
                 <td>
-                    <input type="radio" name="choice" value="paper" id="paperRadio"> Paper
-                    <input type="radio" name="choice" value="scissors" id="scissorsRadio"> Scissors
-                    <input type="radio" name="choice" value="rock" id="rockRadio"> Rock
+                    <input type="radio" name="playerChoice" value="paper"> Paper
+                    <input type="radio" name="playerChoice" value="scissors"> Scissors
+                    <input type="radio" name="playerChoice" value="rock"> Rock
                 </td>
-                <td><button onclick="play()">Go!</button></td>
-                <td id="computerChoice">Computer choice:</td>
+                <td>
+                    <button onclick="playGame()">Go!</button>
+                </td>
+                <td id="computerChoice"></td>
             </tr>
             <tr>
-                <td colspan="3" id="resultText">Result: </td>
+                <td id="playerSelection"></td>
+                <td></td>
+                <td id="result"></td>
             </tr>
         </table>
-        <p id="historyText">History:</p>
+        <p id="history">History: You have played total: 0 time(s)!<br>Paper: 0 time(s) & Scissors: 0 time(s) & Rock: 0 time(s).</p>
     </div>
 
     <script src="game.js"></script>
