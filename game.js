@@ -1,65 +1,56 @@
-// Prompt for the player's name
-const playerName = window.prompt("Please enter your name:");
+let playerName = "";
 
-// Check if the player entered a name and it's not empty
-if (playerName) {
-    // Display the player's name and welcome message
-    const welcomeContainer = document.getElementById("welcomeContainer");
-    welcomeContainer.innerHTML = `<p>Welcome, ${playerName}!</p>`;
-} else {
-    // Handle the case where the player didn't enter a name
-    alert("Please enter your name to continue.");
+function startGame() {
+    playerName = document.getElementById("playerName").value;
+    if (playerName === "") {
+        alert("Please enter your name.");
+    } else {
+        document.getElementById("welcomeMessage").textContent = playerName;
+        document.getElementById("gameContainer").style.display = "block";
+    }
 }
 
-// Game variables
-let totalPlays = 0;
-let paperCount = 0;
-let scissorsCount = 0;
-let rockCount = 0;
-
-// Play function
-function play() {
-    let choice = document.querySelector('input[name="choice"]:checked');
-    if (!choice) {
-        alert("Please select Rock, Paper, or Scissors.");
+function playGame() {
+    const playerChoice = document.querySelector('input[name="playerChoice"]:checked');
+    if (!playerChoice) {
+        alert("Please select an option.");
         return;
     }
-    choice = choice.value;
 
-    const computerChoice = getRandomChoice();
-    document.getElementById("yourChoice").textContent = `Your choice: ${choice}`;
-    document.getElementById("computerChoice").textContent = `Computer choice: ${computerChoice}`;
-
-    totalPlays++;
-    updateCounts(choice);
-    updateHistoryText();
-
-    const result = compare(choice, computerChoice);
-    document.getElementById("resultText").textContent = `Result: ${result}`;
-}
-
-// Function to get a random computer choice
-function getRandomChoice() {
     const choices = ["paper", "scissors", "rock"];
-    return choices[Math.floor(Math.random() * choices.length)];
+    const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+    document.getElementById("playerSelection").textContent = `You selected: ${playerChoice.value}`;
+    document.getElementById("computerChoice").textContent = `Computer selected: ${computerChoice}`;
+
+    const result = compare(playerChoice.value, computerChoice);
+    document.getElementById("result").textContent = `Result: ${result}`;
+
+    updateHistory(result, choices);
 }
 
-// Function to update play counts
-function updateCounts(choice) {
-    if (choice === "paper") paperCount++;
-    if (choice === "scissors") scissorsCount++;
-    if (choice === "rock") rockCount++;
+function compare(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+        return "Tie";
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "scissors" && computerChoice === "paper") ||
+        (playerChoice === "paper" && computerChoice === "rock")
+    ) {
+        return "Win";
+    } else {
+        return "Lose";
+    }
 }
 
-// Function to update history text
-function updateHistoryText() {
-    let historyText = `History: You have played a total of ${totalPlays} time(s)! Paper: ${paperCount} time(s) & Scissors: ${scissorsCount} time(s) & Rock: ${rockCount} time(s).`;
-    document.getElementById("historyText").textContent = historyText;
-}
+function updateHistory(result, choices) {
+    let totalPlays = parseInt(document.getElementById("history").textContent.match(/\d+/)[0]) + 1;
+    let choiceCounts = { paper: 0, scissors: 0, rock: 0 };
 
-// Function to compare player and computer choices
-function compare(yourChoice, computerChoice) {
-    if (yourChoice === computerChoice) return "It's a tie!";
-    if ((yourChoice === "rock" && computerChoice === "scissors") || (yourChoice === "paper" && computerChoice === "rock") || (yourChoice === "scissors" && computerChoice === "paper")) return "You win!";
-    return "Computer wins!";
+    choices.forEach((choice) => {
+        choiceCounts[choice] = parseInt(document.getElementById("history").textContent.match(new RegExp(`${choice}: (\\d+)`))[1]);
+    });
+
+    document.getElementById("history").textContent = `History: You have played total: ${totalPlays} time(s)!
+        Paper: ${choiceCounts.paper} time(s) & Scissors: ${choiceCounts.scissors} time(s) & Rock: ${choiceCounts.rock} time(s).`;
 }
