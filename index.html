@@ -7,16 +7,10 @@
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-    <script>
-        var playerName = window.prompt("Please enter your name");
-        if (playerName) {
-            document.write("<h1>Welcome, " + playerName + "! Let's play Rock Paper Scissors.</h1>");
-        } else {
-            document.write("<h1>Welcome to Rock Paper Scissors!</h1>");
-        }
-    </script>
-
-    <!-- Game container -->
+    <script src="game.js"></script>
+    
+    <h1 id="welcomeText"></h1>
+    
     <div id="gameContainer">
         <table>
             <tr>
@@ -31,22 +25,13 @@
                     <input type="radio" name="choice" value="rock" id="rockRadio"> Rock
                 </td>
                 <td><button onclick="play()">Go!</button></td>
-                <td id="computerChoice"></td>
+                <td id="computerChoiceDisplay"></td>
             </tr>
             <tr>
-                <td id="yourChoice"></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td id="computerResult"></td>
+                <td colspan="3" id="resultText">Results will show here after you play.</td>
             </tr>
         </table>
-        <p id="playHistory"></p>
+        <p id="historyText"></p>
     </div>
-
-    <script src="game.js"></script>
 </body>
 </html>
