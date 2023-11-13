@@ -28,9 +28,21 @@ function updateHistoryText() {
     document.getElementById("rockCount").textContent = rockCount;
 }
 
-function play(choice) {
+function play() {
     if (!gameStarted) {
         alert("Please start the game first.");
+        return;
+    }
+
+    let choice;
+    if (document.getElementById('paperRadio').checked) {
+        choice = 'paper';
+    } else if (document.getElementById('scissorsRadio').checked) {
+        choice = 'scissors';
+    } else if (document.getElementById('rockRadio').checked) {
+        choice = 'rock';
+    } else {
+        alert("Please select Rock, Paper, or Scissors.");
         return;
     }
 
@@ -40,7 +52,6 @@ function play(choice) {
 
     totalPlays++;
 
-    // Update the counters based on the user's choice
     if (choice === "paper") {
         paperCount++;
     } else if (choice === "scissors") {
@@ -54,6 +65,7 @@ function play(choice) {
     const result = compare(choice, computerChoice);
     document.getElementById("computerResult").textContent = result;
 }
+
 
 function compare(yourChoice, computerChoice) {
     if (yourChoice === computerChoice) {
