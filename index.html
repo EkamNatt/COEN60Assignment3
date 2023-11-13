@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Assign2 - Rock Paper Scissors</title>
     <link rel="stylesheet" href="game.css">
 </head>
 <body>
-    <h1>Welcome to Rock Paper Scissors!</h1>
-    <p>Enter your name: <input type="text" id="playerName"></p>
-    <button onclick="startGame()">Start Game</button>
-    
+    <script>
+        var playerName = window.prompt("Please enter your name");
+        if (playerName) {
+            document.write("<h1>Welcome, " + playerName + "! Let's play Rock Paper Scissors.</h1>");
+        } else {
+            document.write("<h1>Welcome to Rock Paper Scissors!</h1>");
+        }
+    </script>
+
     <!-- Game container -->
-    <div id="gameContainer" style="display: none;">
+    <div id="gameContainer">
         <table>
             <tr>
                 <th>Your selection</th>
@@ -31,14 +36,15 @@
             <tr>
                 <td id="yourChoice"></td>
                 <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
                 <td id="computerResult"></td>
             </tr>
         </table>
-        <p>Total play counts: <span id="totalPlays">0</span></p>
-        <p>Times chosen Paper: <span id="paperCount">0</span></p>
-        <p>Times chosen Scissors: <span id="scissorsCount">0</span></p>
-        <p>Times chosen Rock: <span id="rockCount">0</span></p>
-        <p id="welcomeText"></p>
+        <p id="playHistory"></p>
     </div>
 
     <script src="game.js"></script>
