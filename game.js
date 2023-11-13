@@ -50,7 +50,18 @@ function play() {
 
     const result = compare(yourChoice, computerChoice);
     document.getElementById("computerResult").textContent = result;
+
+    // Update the counters based on the user's choice
+    if (yourChoice === "paper") {
+        paperCount++;
+    } else if (yourChoice === "scissors") {
+        scissorsCount++;
+    } else if (yourChoice === "rock") {
+        rockCount++;
+    }
+    updateHistoryText();
 }
+
 
 function compare(yourChoice, computerChoice) {
     if (yourChoice === computerChoice) {
