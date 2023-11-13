@@ -23,41 +23,35 @@ function getRandomChoice() {
 
 function updateHistoryText() {
     document.getElementById("totalPlays").textContent = totalPlays;
-    document.getElementById("historyText").textContent = `History: You have played total ${totalPlays} time(s)!
-    Paper: ${paperCount} time(s) & Scissors: ${scissorsCount} time(s) & Rock: ${rockCount} time(s).`;
+    document.getElementById("paperCount").textContent = paperCount;
+    document.getElementById("scissorsCount").textContent = scissorsCount;
+    document.getElementById("rockCount").textContent = rockCount;
 }
 
-function play() {
+function play(choice) {
     if (!gameStarted) {
         alert("Please start the game first.");
         return;
     }
 
-    const selectedChoice = document.querySelector("input[name='choice']:checked");
-    if (!selectedChoice) {
-        alert("Please select an option before playing.");
-        return;
-    }
-
-    const yourChoice = selectedChoice.value;
     const computerChoice = getRandomChoice();
-    document.getElementById("yourChoice").textContent = `You selected: ${yourChoice}`;
+    document.getElementById("yourChoice").textContent = `You selected: ${choice}`;
     document.getElementById("computerChoice").textContent = `Computer selected: ${computerChoice}`;
 
     totalPlays++;
-    
+
     // Update the counters based on the user's choice
-    if (yourChoice === "paper") {
+    if (choice === "paper") {
         paperCount++;
-    } else if (yourChoice === "scissors") {
+    } else if (choice === "scissors") {
         scissorsCount++;
-    } else if (yourChoice === "rock") {
+    } else if (choice === "rock") {
         rockCount++;
     }
 
     updateHistoryText();
 
-    const result = compare(yourChoice, computerChoice);
+    const result = compare(choice, computerChoice);
     document.getElementById("computerResult").textContent = result;
 }
 
